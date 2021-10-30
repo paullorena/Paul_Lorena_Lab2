@@ -4,13 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Paul_Lorena_Lab2"
+        xmlns:CustomCommands="clr-namespace:Paul_Lorena_Lab2.CustomCommands"
         mc:Ignorable="d"
-        Title="Pizzeria Colosseo" Height="496" Width="760" ResizeMode="NoResize" Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}">
-    <Grid Margin="0,0,10,0">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Label x:Name="lblTitle" Content="Pizza - Bake and Sale" FontWeight="Bold" FontSize="24" Margin="208,10,290,431"/>
+        Title="Pizzeria Colosseo" Height="496" Width="775" ResizeMode="NoResize" Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}">
+    <Grid MenuItem.Click="PizzaItemsShow_Click" Margin="0,0,10,0">
+        <Label x:Name="lblTitle" Content="Pizza - Bake and Sale" FontWeight="Bold" FontSize="24" Margin="229,10,269,431"/>
         <GroupBox x:Name="bgPizza" Header="Pizza Type" FontWeight="Bold" RenderTransformOrigin="0.504,0.471" Margin="41,77,25,0" Height="131" VerticalAlignment="Top">
             <Canvas Margin="-17,1,0,-17" HorizontalAlignment="Left" Width="693" RenderTransformOrigin="0.635,0.399">
                 <Canvas.RenderTransform>
@@ -33,10 +31,10 @@
                 <TextBox x:Name="txtCanibalePizza" Canvas.Left="598" Canvas.Top="16" Text="0" TextWrapping="Wrap" Width="80" TextAlignment="Right" IsReadOnly="True"/>
             </Canvas>
         </GroupBox>
-        <GroupBox x:Name="gbSale" Header="Current Sale" Margin="34,272,25,10" FontWeight="Bold">
+        <GroupBox x:Name="gbSale" Header="Current Sale" Margin="34,227,25,10" FontWeight="Bold">
             <Canvas Height="169" VerticalAlignment="Top" Margin="0,0,-12,0">
                 <Label x:Name="lblQuantity" Content="Quantity" Canvas.Left="23" Canvas.Top="22" FontWeight="Normal"/>
-                <TextBox x:Name="txtQuatity" Canvas.Left="98" Canvas.Top="26" Text="0" TextWrapping="Wrap" Width="74" TextAlignment="Right"/>
+                <TextBox x:Name="txtQuantity" Canvas.Left="98" Canvas.Top="26" Text="0" TextWrapping="Wrap" Width="74" TextAlignment="Right"/>
                 <Label x:Name="lblType" Content="Type" Canvas.Left="237" Canvas.Top="22" FontWeight="Normal"/>
                 <ComboBox x:Name="cmbType" Canvas.Left="277" Canvas.Top="25" Width="168" Height="20"/>
                 <Label x:Name="lblPrice" Content="Price" Canvas.Left="508" Canvas.Top="22" FontWeight="Normal"/>
@@ -44,9 +42,12 @@
                 <ListBox x:Name="lstSale" Height="78" Width="520" Canvas.Left="24" Canvas.Top="63"/>
                 <Label x:Name="lblTotal" Content="Total" Canvas.Left="430" Canvas.Top="141" FontWeight="Bold" Width="96" RenderTransformOrigin="0.966,-0.68"/>
                 <TextBox x:Name="txtTotal" Canvas.Left="477" Canvas.Top="146" Text="0" TextWrapping="Wrap" Width="67" TextAlignment="Right" IsReadOnly="True" RenderTransformOrigin="-0.882,0.466" Height="18"/>
-                <Button x:Name="btnAddToSale" Content="Add To Sale" Canvas.Left="582" Canvas.Top="63" FontWeight="Normal" Height="21" Width="82"/>
-                <Button x:Name="btnRemoveItem" Content="Remove Item" Canvas.Left="582" Canvas.Top="92" FontWeight="Normal" Width="82"/>
-                <Button x:Name="btnCheckOut" Content="Check Out" Canvas.Left="582" Canvas.Top="127" Height="34" Width="82"/>
+                <Button x:Name="btnAddToSale" Content="Add To Sale" Canvas.Left="582" Canvas.Top="63" FontWeight="Normal" Height="21" Width="82" Click="btnAddToSale_Click"/>
+                <Button x:Name="btnRemoveItem" Content="Remove Item" Canvas.Left="582" Canvas.Top="92" FontWeight="Normal" Width="82"  Click="btnRemoveItem_Click"/>
+                <Button x:Name="btnCheckOut" Content="Check Out" Canvas.Left="582" Canvas.Top="127" Height="34" Width="82" Click="btnCheckOut_Click"/>
+                <Label Content="Pricelist" Canvas.Left="200" Canvas.Top="172" Height="80"/>
+                <ComboBox Canvas.Left="260" Canvas.Top="174" Width="120"
+                          SelectionChanged="cmbType_SelectionChanged"/>
             </Canvas>
         </GroupBox>
         <Menu x:Name="mnuMain" HorizontalAlignment="Left" Height="19" VerticalAlignment="Top"
@@ -62,8 +63,10 @@ Width="81">
                     <MenuItem x:Name="quatPizzaMenuItem" Header="Quattro Stagioni Pizza"/>
                     <MenuItem x:Name="canPizzaMenuItem" Header="Canibale Pizza"/>
                 </MenuItem>
-                <MenuItem Header="Stop"/>
+                <MenuItem Header="Stop" x:Name="mnuStop" Click="stopMenuItem_Click" InputGestureText="Ctrl+S" Command="CustomCommands:StopCommand.Launch"/>
+                <MenuItem Header="Inventory" Command="ApplicationCommands.Print"/>
             </MenuItem>
         </Menu>
+        <CheckBox Content="CheckBox" HorizontalAlignment="Left" Margin="1136,481,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
