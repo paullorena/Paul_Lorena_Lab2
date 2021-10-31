@@ -41,7 +41,6 @@ namespace Paul_Lorena_Lab2
             cmd2.Executed += new ExecutedRoutedEventHandler(CtrlS_CommandHandler);
             this.CommandBindings.Add(cmd2);
         }
-    
         private void frmMain_Loaded(object sender, RoutedEventArgs e)
         {
             myPizzaMachine = new PizzaMachine();
@@ -242,7 +241,6 @@ namespace Paul_Lorena_Lab2
                 }
             }
         }
-
         private void PizzaItemsShow_Click(object sender, RoutedEventArgs e)
         {
             string mesaj;
@@ -270,7 +268,6 @@ namespace Paul_Lorena_Lab2
             mQuattroStagioniPizza + " Quattro Stagioni pizza, " + mCanibalePizza + " Canibale pizza"
             );
         }
-
         private void CtrlS_CommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
             //handler pentru comanda Ctrl+S -> se va executa stopMenuItem_Click

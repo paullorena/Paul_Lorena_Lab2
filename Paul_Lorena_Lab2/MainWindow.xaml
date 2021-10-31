@@ -7,18 +7,14 @@
         xmlns:CustomCommands="clr-namespace:Paul_Lorena_Lab2.CustomCommands"
         mc:Ignorable="d"
         Title="Pizzeria Colosseo" Height="496" Width="775" ResizeMode="NoResize" Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}">
-    <Grid MenuItem.Click="PizzaItemsShow_Click" Margin="0,0,10,0">
+    <Grid Height="519" VerticalAlignment=" Top">
+        <Grid.RowDefinitions>
+            <RowDefinition> </RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid MenuItem.Click="PizzaItemsShow_Click"></Grid>
         <Label x:Name="lblTitle" Content="Pizza - Bake and Sale" FontWeight="Bold" FontSize="24" Margin="229,10,269,431"/>
         <GroupBox x:Name="bgPizza" Header="Pizza Type" FontWeight="Bold" RenderTransformOrigin="0.504,0.471" Margin="41,77,25,0" Height="131" VerticalAlignment="Top">
             <Canvas Margin="-17,1,0,-17" HorizontalAlignment="Left" Width="693" RenderTransformOrigin="0.635,0.399">
-                <Canvas.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="0.203"/>
-                        <TranslateTransform X="0.039" Y="0.325"/>
-                    </TransformGroup>
-                </Canvas.RenderTransform>
                 <TextBox x:Name="txtPepperoniPizza" Margin="136,0,0,0" Text="0" TextWrapping="Wrap" Width="83" IsReadOnly="True" TextAlignment="Right" Height="20" RenderTransformOrigin="1.945,-2.591" Canvas.Left="23" Canvas.Top="16"/>
                 <Label x:Name="lblPepperoniPizza" Content="Pepperoni Pizza" Canvas.Left="31" Canvas.Top="10" FontWeight="Normal"/>
                 <Label x:Name="lblMargheritaPizza" Content="Margherita Pizza" Canvas.Left="29" Canvas.Top="61" FontWeight="Normal" RenderTransformOrigin="-2.942,1.034"/>
@@ -36,7 +32,7 @@
                 <Label x:Name="lblQuantity" Content="Quantity" Canvas.Left="23" Canvas.Top="22" FontWeight="Normal"/>
                 <TextBox x:Name="txtQuantity" Canvas.Left="98" Canvas.Top="26" Text="0" TextWrapping="Wrap" Width="74" TextAlignment="Right"/>
                 <Label x:Name="lblType" Content="Type" Canvas.Left="237" Canvas.Top="22" FontWeight="Normal"/>
-                <ComboBox x:Name="cmbType" Canvas.Left="277" Canvas.Top="25" Width="168" Height="20"/>
+                <ComboBox x:Name="cmbType" Canvas.Left="277" Canvas.Top="25" Width="168" Height="20" SelectionChanged="cmbType_SelectionChanged"/>
                 <Label x:Name="lblPrice" Content="Price" Canvas.Left="508" Canvas.Top="22" FontWeight="Normal"/>
                 <TextBox x:Name="txtPrice" Canvas.Left="566" Canvas.Top="27" Text="0" TextWrapping="Wrap" Width="90" TextAlignment="Right" IsReadOnly="True"/>
                 <ListBox x:Name="lstSale" Height="78" Width="520" Canvas.Left="24" Canvas.Top="63"/>
@@ -45,9 +41,6 @@
                 <Button x:Name="btnAddToSale" Content="Add To Sale" Canvas.Left="582" Canvas.Top="63" FontWeight="Normal" Height="21" Width="82" Click="btnAddToSale_Click"/>
                 <Button x:Name="btnRemoveItem" Content="Remove Item" Canvas.Left="582" Canvas.Top="92" FontWeight="Normal" Width="82"  Click="btnRemoveItem_Click"/>
                 <Button x:Name="btnCheckOut" Content="Check Out" Canvas.Left="582" Canvas.Top="127" Height="34" Width="82" Click="btnCheckOut_Click"/>
-                <Label Content="Pricelist" Canvas.Left="200" Canvas.Top="172" Height="80"/>
-                <ComboBox Canvas.Left="260" Canvas.Top="174" Width="120"
-                          SelectionChanged="cmbType_SelectionChanged"/>
             </Canvas>
         </GroupBox>
         <Menu x:Name="mnuMain" HorizontalAlignment="Left" Height="19" VerticalAlignment="Top"
@@ -67,6 +60,5 @@ Width="81">
                 <MenuItem Header="Inventory" Command="ApplicationCommands.Print"/>
             </MenuItem>
         </Menu>
-        <CheckBox Content="CheckBox" HorizontalAlignment="Left" Margin="1136,481,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
